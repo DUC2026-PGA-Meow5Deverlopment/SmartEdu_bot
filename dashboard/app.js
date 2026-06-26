@@ -3,9 +3,7 @@
  * Communicates with the FastAPI backend at API_BASE.
  */
 
-const API_BASE = window.location.protocol === "file:"
-  ? "https://smartedu-bot-1ryu.onrender.com"
-  : window.location.origin;
+const API_BASE = "https://smartedu-bot-1ryu.onrender.com";
 
 // ── State ──────────────────────────────────────────────────────────────────
 let authToken = localStorage.getItem("token") || null;
