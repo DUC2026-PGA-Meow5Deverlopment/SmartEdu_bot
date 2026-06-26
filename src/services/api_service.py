@@ -8,7 +8,8 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-API_BASE = os.getenv("API_BASE_URL", "http://localhost:8000")
+port = os.getenv("PORT", "8000")
+API_BASE = os.getenv("API_BASE_URL", f"http://127.0.0.1:{port}")
 
 _client_local = threading.local()
 
