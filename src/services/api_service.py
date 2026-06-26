@@ -8,17 +8,21 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-raw_api_base = os.getenv("API_BASE_URL", "").strip()
+is_render = os.getenv("RENDER") == "true"
 port = os.getenv("PORT", "8000")
 
-if not raw_api_base:
+if is_render:
     API_BASE = f"http://127.0.0.1:{port}"
 else:
-    API_BASE = raw_api_base
-    if "localhost:8000" in API_BASE:
-        API_BASE = API_BASE.replace("localhost:8000", f"127.0.0.1:{port}")
-    elif "127.0.0.1:8000" in API_BASE:
-        API_BASE = API_BASE.replace("127.0.0.1:8000", f"127.0.0.1:{port}")
+    raw_api_base = os.getenv("API_BASE_URL", "").strip()
+    if not raw_api_base:
+        API_BASE = f"http://127.0.0.1:{port}"
+    else:
+        API_BASE = raw_api_base
+        if "localhost:8000" in API_BASE:
+            API_BASE = API_BASE.replace("localhost:8000", f"127.0.0.1:{port}")
+        elif "127.0.0.1:8000" in API_BASE:
+            API_BASE = API_BASE.replace("127.0.0.1:8000", f"127.0.0.1:{port}")
 
 _client_local = threading.local()
 
