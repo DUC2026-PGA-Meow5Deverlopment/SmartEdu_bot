@@ -4,7 +4,7 @@
  */
 
 const API_BASE = window.location.protocol === "file:"
-  ? "http://localhost:8000"
+  ? "https://smartedu-bot-1ryu.onrender.com/"
   : window.location.origin;
 
 // ── State ──────────────────────────────────────────────────────────────────
